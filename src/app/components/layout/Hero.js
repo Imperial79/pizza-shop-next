@@ -7,7 +7,7 @@ import { KButton } from "../components";
 
 function Hero() {
   return (
-    <section className="grid grid-cols-2 mt-10 gap-5">
+    <section className="grid md:grid-cols-2  gap-5 items-center">
       <div>
         <h1 className="text-4xl font-medium">
           Everything is better with a{" "}
@@ -46,11 +46,11 @@ function Hero() {
         </div>
       </div>
 
-      <div className="relative">
-        <Image
+      <div className="md:order-last order-first">
+        <img
           src="/hero-img.webp"
           objectFit="contain"
-          layout="fill"
+          className="mx-auto max-w-[400px]"
           alt="hero"
         />
       </div>

@@ -1,5 +1,4 @@
 import React from "react";
-import Image from "next/image";
 import ProductCard from "../ProductCard";
 
 function HomeMenu() {
@@ -11,9 +10,6 @@ function HomeMenu() {
       </div>
 
       <div className="grid md:grid-cols-3 grid-cols-2 gap-4 mt-10">
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
         <ProductCard />
         <ProductCard />
         <ProductCard />
