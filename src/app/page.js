@@ -3,6 +3,7 @@ import Footer from "./components/layout/Footer";
 import Header from "./components/layout/Header";
 import Hero from "./components/layout/Hero";
 import HomeMenu from "./components/layout/HomeMenu";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -31,9 +32,9 @@ export default function Home() {
       <section>
         <SectionHeader subHeader="Don't hesitate" mainHeader="Contact Us" />
         <div className="mt-8 text-center">
-          <a href="tel:+919093096277" className="text-3xl font-semibold">
+          <Link href="tel:+919093096277" className="text-3xl font-semibold">
             +91 909 309 6277
-          </a>
+          </Link>
         </div>
       </section>
     </div>

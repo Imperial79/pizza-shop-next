@@ -1,9 +1,7 @@
 "use client";
 
 import React from "react";
-import Image from "next/image";
-import Link from "next/link";
-import { KButton } from "../components";
+import { KButton, KTextButton } from "../components";
 
 function Hero() {
   return (
@@ -29,7 +27,6 @@ function Hero() {
                 viewBox="0 0 24 24"
                 strokeWidth={1.5}
                 stroke="currentColor"
-                dataSlot="icon"
                 className="w-6 h-6"
               >
                 <path
@@ -40,16 +37,13 @@ function Hero() {
               </svg>
             }
           />
-          <div className="font-medium mx-2 hover:underline cursor-pointer">
-            Learn More
-          </div>
+          <KTextButton label="Learn More" />
         </div>
       </div>
 
       <div className="md:order-last order-first">
         <img
           src="/hero-img.webp"
-          objectFit="contain"
           className="mx-auto max-w-[400px]"
           alt="hero"
         />

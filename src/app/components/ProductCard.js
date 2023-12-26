@@ -17,7 +17,7 @@ function ProductCard() {
         label="Add to Cart ₹ 199/-"
         width="w-full"
         margin="mt-5"
-        fontWeight="medium"
+        fontWeight="font-medium"
         textAlign="text-center"
       />
     </div>
