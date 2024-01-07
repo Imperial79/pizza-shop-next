@@ -6,7 +6,7 @@ import Logo from "../Logo";
 import { KButton, KTextButton } from "../components";
 
 function Header() {
-  const [isScrolling, setisScrolling] = useState(false);
+  const [isScrolling, setisScrolling] = useState(true);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -24,18 +24,17 @@ function Header() {
 
   return (
     <header
-      className={`md:flex flex-wrap md:justify-between items-center p-5 fixed w-full ${
+      className={`flex justify-between items-center p-5 fixed w-full ${
         isScrolling ? "bg-white" : "bg-gray-100"
       } h-20 transition-all duration-200`}
     >
-      <div className="gap-6 flex items-center justify-center">
+      <div className="gap-6 flex items-center md:justify-center">
         <Logo />
-
-        <nav className="gap-6 flex items-center justify-center">
-          <Link href="">Home</Link>
-          <Link href="">Menu</Link>
-          <Link href="">About</Link>
-          <Link href="">Contact</Link>
+        <nav className="gap-6 md:flex items-center justify-center hidden">
+          <KTextButton href="" label="Home" />
+          <KTextButton href="" label="Menu" />
+          <KTextButton href="" label="About Us" />
+          <KTextButton href="" label="Contact Us" />
         </nav>
       </div>
       <nav className="gap-3 flex items-center justify-end">

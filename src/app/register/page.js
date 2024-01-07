@@ -1,4 +1,6 @@
-import React from "react";
+"use client";
+
+import React, { useState } from "react";
 import SectionHeader from "../components/SectionHeader";
 import {
   KButton,
@@ -8,28 +10,50 @@ import {
 } from "../components/components";
 
 function RegisterPage() {
+  const [email, setemail] = useState("");
+  const [password, setpassword] = useState("");
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    console.log("submit");
+
+    const response = await fetch("/api/register", {
+      method: "POST",
+      body: JSON.stringify({
+        email,
+        password,
+      }),
+      headers: {
+        "content-type": "application/json",
+      },
+    });
+
+    console.log(response);
+  }
   return (
-    <section className="mt-10">
+    <section>
       <div className="border rounded-xl bg-gray-50 p-5 max-w-xl mx-auto">
         <SectionHeader
           subHeader="Create an account"
           mainHeader="Register"
           margin="mb-5"
         />
-        <form className="bg-white p-5 rounded-xl">
+        <form className="bg-white p-5 rounded-xl" onSubmit={handleSubmit}>
           <KGrid>
             <KTextField
               id="email"
               label={"Your E-mail"}
               placeholder="Eg. example@mail.com"
+              value={email}
+              onChange={(e) => {
+                setemail(e.target.value);
+              }}
             />
             <KTextField
               id="fullname"
               label={"Fullname"}
               placeholder="Eg. John Doe"
             />
-          </KGrid>
-          <KGrid>
             <KTextField
               id="phone"
               label={"Phone Number"}
@@ -40,6 +64,10 @@ function RegisterPage() {
               id="password"
               label={"Create Password"}
               placeholder="Create a strong password"
+              value={password}
+              onChange={(e) => {
+                setpassword(e.target.value);
+              }}
             />
           </KGrid>
           <KTextArea
@@ -48,8 +76,8 @@ function RegisterPage() {
             label={"Address"}
             placeholder="Eg. A/84, 6th Street, Kagage Port, St. Dominos"
           />
-          <KButton label="Register" width="w-full" />
-          <h2 className="my-5 text-gray-500">Or continue with</h2>
+          <KButton label="Register" type="submit" width="w-full" />
+          <h2 className="my-5 text-gray-500 text-center">Or continue with</h2>
 
           <GoogleSignButton />
         </form>

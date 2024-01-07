@@ -15,24 +15,14 @@ export function KButton({
   margin = "",
   fontWeight = "",
 }) {
+  const classes = `${btnColor} rounded-full px-4 py-2 ${textColor} flex ${width} ${textAlign} ${textSize} items-center ${margin} ${fontWeight} justify-center transition-all duration-300 hover:shadow-lg`;
   return href === "" ? (
-    <button
-      id={id}
-      type={type}
-      onClick={onClick}
-      className={`${btnColor} rounded-full px-4 py-2 ${textColor} flex ${width} ${textAlign} ${textSize} items-center ${margin} ${fontWeight} justify-center transition-all duration-200 hover:${btnColor}/80`}
-    >
+    <button id={id} type={type} onClick={onClick} className={classes}>
       {label}
       {icon !== undefined ? <div className="ml-2">{icon}</div> : <></>}
     </button>
   ) : (
-    <Link
-      href={href}
-      id={id}
-      type={type}
-      onClick={onClick}
-      className={`${btnColor} rounded-full px-4 py-2 ${textColor} flex ${width} ${textAlign} ${textSize} items-center ${margin} ${fontWeight} justify-center hover:${btnColor}/80 transition-all duration-200`}
-    >
+    <Link href={href} id={id} type={type} onClick={onClick} className={classes}>
       {label}
       {icon !== undefined ? <div className="ml-2">{icon}</div> : <></>}
     </Link>
@@ -58,7 +48,7 @@ export function KTextButton({
       id={id}
       type={type}
       onClick={onClick}
-      className={`${textColor} flex ${width} ${textAlign} ${textSize} items-center ${margin} ${fontWeight} justify-center hover:underline`}
+      className={`${textColor} flex ${width} ${textAlign} ${textSize} items-center ${margin} ${fontWeight} justify-center hover:underline `}
     >
       {label}
       {icon !== undefined ? <div className="ml-2">{icon}</div> : <></>}
@@ -86,7 +76,7 @@ export function KGrid({
 }) {
   return (
     <div
-      className={`md:grid md:grid-cols-${crossAxisCount} gap-${gap} items-${alignment} ${margin}`}
+      className={`grid md:grid-cols-${crossAxisCount} grid-cols-1 gap-${gap} items-${alignment} ${margin}`}
     >
       {children}
     </div>
@@ -103,6 +93,7 @@ export function KTextField({
   required,
   readOnly,
   width = "w-full",
+  margin = "mb-0",
 }) {
   return (
     <div>
@@ -112,7 +103,7 @@ export function KTextField({
         type={type}
         id={id}
         name={id}
-        className={`bg-white text-sm placeholder:text-sm p-2.5 border border-gray-300 rounded-lg focus:border-b-8 focus:border-primary transition-all block ${width}`}
+        className={`bg-white text-sm placeholder:text-sm p-2.5 border border-gray-300 rounded-lg focus:border-b-8 focus:border-primary transition-all block ${width} ${margin}`}
         placeholder={placeholder}
         value={value}
         onChange={onChange}
