@@ -3,7 +3,6 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import Logo from "../Logo";
-import { KButton, KTextButton } from "../components";
 
 function Header() {
   const [isScrolling, setisScrolling] = useState(true);
@@ -31,15 +30,27 @@ function Header() {
       <div className="gap-6 flex items-center md:justify-center">
         <Logo />
         <nav className="gap-6 md:flex items-center justify-center hidden">
-          <KTextButton href="" label="Home" />
-          <KTextButton href="" label="Menu" />
-          <KTextButton href="" label="About Us" />
-          <KTextButton href="" label="Contact Us" />
+          <Link href="" className="kTextButton">
+            Home
+          </Link>
+          <Link href="" className="kTextButton">
+            Menu
+          </Link>
+          <Link href="" className="kTextButton">
+            About Us
+          </Link>
+          <Link href="" className="kTextButton">
+            Contact Us
+          </Link>
         </nav>
       </div>
       <nav className="gap-3 flex items-center justify-end">
-        <KTextButton href="/login" label="Login" />
-        <KButton href="/register" label="Register" textSize="text-sm" />
+        <Link href="/login" className="kTextButton">
+          Login
+        </Link>
+        <Link href="/register" className="kButton">
+          Register
+        </Link>
       </nav>
     </header>
   );

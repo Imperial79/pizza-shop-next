@@ -1,5 +1,4 @@
 import React from "react";
-import { KButton } from "./components";
 
 function ProductCard() {
   return (
@@ -12,14 +11,7 @@ function ProductCard() {
         Lorem, ipsum dolor sit amet consectetur adipisicing elit. Facere quis
         est,
       </p>
-
-      <KButton
-        label="Add to Cart ₹ 199/-"
-        width="w-full"
-        margin="mt-5"
-        fontWeight="font-medium"
-        textAlign="text-center"
-      />
+      <button className="kButton mt-5 w-full">Add to Cart ₹ 199.00</button>
     </div>
   );
 }

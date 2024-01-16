@@ -2,81 +2,94 @@
 
 import React, { useState } from "react";
 import SectionHeader from "../components/SectionHeader";
-import {
-  KButton,
-  KGrid,
-  KTextArea,
-  KTextField,
-} from "../components/components";
+import { KTextArea, KTextField } from "../components/components";
 
 function RegisterPage() {
-  const [email, setemail] = useState("");
-  const [password, setpassword] = useState("");
+  const [creatingUser, setCreatingUser] = useState(false);
 
-  async function handleSubmit(e) {
-    e.preventDefault();
-    console.log("submit");
+  async function handleSubmit() {
+    var formD = document.forms.registerForm;
+    var formData = new FormData(formD);
 
-    const response = await fetch("/api/register", {
+    const { fullname, email, password, phone, address } =
+      Object.fromEntries(formData);
+
+    setCreatingUser(true);
+
+    await fetch("/api/register", {
       method: "POST",
       body: JSON.stringify({
+        fullname,
         email,
         password,
+        phone,
+        address,
       }),
       headers: {
         "content-type": "application/json",
       },
     });
 
-    console.log(response);
+    setCreatingUser(false);
   }
   return (
     <section>
-      <div className="border rounded-xl bg-gray-50 p-5 max-w-xl mx-auto">
+      <div className="border rounded-xl bg-gray-50 p-5 max-w-xl mx-auto mt-10">
         <SectionHeader
           subHeader="Create an account"
           mainHeader="Register"
           margin="mb-5"
         />
-        <form className="bg-white p-5 rounded-xl" onSubmit={handleSubmit}>
-          <KGrid>
+        <form
+          id="registerForm"
+          className="bg-white p-5 rounded-xl"
+          onSubmit={(e) => {
+            e.preventDefault();
+            handleSubmit();
+          }}
+        >
+          <div className="kGrid mb-5">
             <KTextField
+              type="email"
               id="email"
-              label={"Your E-mail"}
-              placeholder="Eg. example@mail.com"
-              value={email}
-              onChange={(e) => {
-                setemail(e.target.value);
-              }}
+              label={"E-mail"}
+              placeholder="Eg. johndoe@mail.com"
+              disabled={creatingUser}
             />
             <KTextField
+              type="name"
               id="fullname"
               label={"Fullname"}
               placeholder="Eg. John Doe"
+              disabled={creatingUser}
             />
+
             <KTextField
               id="phone"
+              type="phone"
+              maxLength={10}
               label={"Phone Number"}
               placeholder="Eg. 909XXX1234"
+              disabled={creatingUser}
             />
             <KTextField
               type="password"
               id="password"
               label={"Create Password"}
               placeholder="Create a strong password"
-              value={password}
-              onChange={(e) => {
-                setpassword(e.target.value);
-              }}
+              disabled={creatingUser}
             />
-          </KGrid>
+          </div>
           <KTextArea
             margin="mb-10"
             id="address"
             label={"Address"}
             placeholder="Eg. A/84, 6th Street, Kagage Port, St. Dominos"
+            disabled={creatingUser}
           />
-          <KButton label="Register" type="submit" width="w-full" />
+          <button className="kButton w-full" disabled={creatingUser}>
+            Register
+          </button>
           <h2 className="my-5 text-gray-500 text-center">Or continue with</h2>
 
           <GoogleSignButton />

@@ -3,7 +3,21 @@
 @tailwind utilities;
 
 
+.kTextField {
+    @apply bg-white text-sm placeholder:text-sm p-2.5 border border-gray-300 rounded-lg focus:border-b-8 focus:border-primary transition-all block disabled:bg-gray-500 disabled:autofill:bg-gray-500
+}
 
+.kTextButton {
+    @apply hover:underline hover:underline-offset-4 select-none
+}
+
+.kButton {
+    @apply bg-primary rounded-full px-4 py-2 text-white text-center items-center justify-center transition-all duration-300 hover:shadow-lg disabled:bg-gray-500
+}
+
+.kGrid {
+    @apply grid grid-cols-2 gap-5 items-center
+}
 
 
 .max2lines {
